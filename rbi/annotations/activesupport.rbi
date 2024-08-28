@@ -76,10 +76,22 @@ end
 
 class Hash
   sig { returns(T::Boolean) }
+  def blank?; end
+
+  sig { returns(T::Boolean) }
+  def present?; end
+
+  sig { returns(T::Boolean) }
   def extractable_options?; end
 end
 
 class Array
+  sig { returns(T::Boolean) }
+  def blank?; end
+
+  sig { returns(T::Boolean) }
+  def present?; end
+
   sig { params(position: Integer).returns(T.self_type) }
   def from(position); end
 
@@ -270,6 +282,12 @@ class Time
 end
 
 class Symbol
+  sig { returns(T::Boolean) }
+  def blank?; end
+
+  sig { returns(T::Boolean) }
+  def present?; end
+
   # alias for `#start_with?`
   sig { params(string_or_regexp: T.any(String, Regexp)).returns(T::Boolean) }
   def starts_with?(*string_or_regexp); end
@@ -368,6 +386,9 @@ class String
 
   sig { params(count: T.nilable(T.any(Integer, Symbol)), locale: T.nilable(Symbol)).returns(String) }
   def pluralize(count = nil, locale = :en); end
+
+  sig { returns(T::Boolean) }
+  def present?; end
 
   sig { params(patterns: T.any(String, Regexp)).returns(String) }
   def remove(*patterns); end
@@ -469,4 +490,15 @@ class ActiveSupport::ErrorReporter
     ).void
   end
   def report(error, handled: true, severity: T.unsafe(nil), context: T.unsafe(nil), source: T.unsafe(nil)); end
+
+  # @version >= 7.2.0.beta1
+  sig do
+    params(
+      error: T.any(Exception, String),
+      severity: T.nilable(Symbol),
+      context: T::Hash[Symbol, T.untyped],
+      source: T.nilable(String),
+    ).void
+  end
+  def unexpected(error, severity: T.unsafe(nil), context: T.unsafe(nil), source: T.unsafe(nil)); end
 end
