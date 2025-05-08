@@ -57,6 +57,9 @@ module RBICentral
   )
 
   RUBOCOP_CONFIG = <<~YML
+    plugins:
+    - rubocop-sorbet
+
     inherit_gem:
       rubocop-sorbet: config/rbi.yml
 
@@ -75,6 +78,9 @@ module RBICentral
 
     Sorbet/EnforceSignatures:
       Enabled: true
+
+    Lint/DuplicateMethods:
+      Enabled: false
   YML
 
   class Error < StandardError; end

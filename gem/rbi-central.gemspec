@@ -25,11 +25,11 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency("bigdecimal", ">= 3.0.0")
   spec.add_dependency("json-schema", ">= 3.0.0")
-  spec.add_dependency("rbi", ">= 0.1.0")
+  spec.add_dependency("rbi", ">= 0.1.9")
   spec.add_dependency("rubocop", ">= 1.29.1")
   spec.add_dependency("rubocop-shopify", ">= 2.5.0")
   spec.add_dependency("rubocop-sorbet", ">= 0.6.11")
-  spec.add_dependency("sorbet-static-and-runtime", ">= 0.5.10225")
+  spec.add_dependency("sorbet-static-and-runtime", ">= 0.5.11922")
   spec.add_dependency("spoom", ">= 1.2.0")
   spec.add_dependency("tapioca", ">= 0.9.2")
   spec.add_dependency("thor", ">= 1.2.1")

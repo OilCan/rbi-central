@@ -17,7 +17,7 @@ module RBICentral
       e = assert_raises(RBICentral::Index::Error) do
         @repo.index
       end
-      assert_equal("Invalid JSON in `index.json`: unexpected token at ''", e.message)
+      assert_equal("Invalid JSON in `index.json`: unexpected end of input", e.message)
     end
 
     def test_index_bad_schema
@@ -61,7 +61,7 @@ module RBICentral
 
       assert_messages(
         [
-          "Unexpected RBI annotations file `rbi/annotations/dir/file4.rbi` (must be in `rbi/annotations` root directory)", # rubocop:disable Layout/LineLength
+          "Unexpected RBI annotations file `rbi/annotations/dir/file4.rbi` (must be in `rbi/annotations` root directory)",
           "Unexpected RBI annotations file `rbi/annotations/file1` (should have `.rbi` extension)",
           "Unexpected RBI annotations file `rbi/annotations/file2.rb` (should have `.rbi` extension)",
           "Unexpected RBI annotations file `rbi/annotations/file3.RBI` (should have `.rbi` extension)",
@@ -85,11 +85,9 @@ module RBICentral
         Formatting errors found in `index.json`:
         --- expected
         +++ index.json
-        @@ -1,13 +1,7 @@
+        @@ -1,12 +1,7 @@
          {
-        -  "gem1": {
-        -  },
-        +  "gem1": {},
+           "gem1": {},
            "gem2": {
         -    "dependencies": [
         -      "a",
